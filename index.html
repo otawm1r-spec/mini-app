@@ -94,8 +94,7 @@
     color:var(--green-deep);
   }
   .card p.desc{
-    font
--size:14.5px;
+    font-size:14.5px;
     line-height:1.65;
     color:#494C50;
     margin:0 0 16px;
@@ -193,7 +192,7 @@
       <div class="pay-step"><b>1000€</b>boshida</div>
       <div class="pay-step"><b>2000€</b>tayyor bo'lganda</div>
     </div>
-    <a class="cta" href="#" onclick="order('yangi_70kodsiz'); return false;">Buyurtma berish</a>
+    <a class="cta" href="#" onclick="order('yangi_70kodsiz', this); return false;">Buyurtma berish</a>
   </div>
 
   <div class="card" id="kod-olish">
@@ -215,7 +214,7 @@
       <div class="pay-step"><b>1000€</b>boshida</div>
       <div class="pay-step"><b>1000€</b>chiqqanda</div>
     </div>
-    <a class="cta" href="#" onclick="order('kod_olish'); return false;">Buyurtma berish</a>
+    <a class="cta" href="#" onclick="order('kod_olish', this); return false;">Buyurtma berish</a>
   </div>
 
   <p class="foot-note">Buyurtma tugmasini bosganingizda bot orqali to'lov shartlari va mas'ul xodim bilan bog'lanish ma'lumoti yuboriladi.</p>
@@ -243,12 +242,18 @@
   }
   scrollToStartParam();
 
-  function order(productId){
+  function order(productId, btn){
     const url = "https://t.me/" + BOT_USERNAME + "?start=order_" + productId;
     if (tg && tg.openTelegramLink) {
       tg.openTelegramLink(url);
     } else {
-      window.location.href = url;}
+      window.location.href = url;
+    }
+    if (btn) {
+      btn.style.background = "#1E7A4C";
+      btn.style.color = "#FFFFFF";
+      btn.textContent = "Ma'lumot yuborildi ✓";
+    }
   }
 </script>
 
